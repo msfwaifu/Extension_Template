@@ -176,6 +176,7 @@
     <ClInclude Include="Source\Configuration\Macros.h" />
     <ClInclude Include="Source\Configuration\Warnings.h" />
     <ClInclude Include="Source\Utilities\All.h" />
+    <ClInclude Include="Source\Utilities\Binarymodification\Hooks\Hooking.h" />
     <ClInclude Include="Source\Utilities\Buffers\Bytebuffer.h" />
     <ClInclude Include="Source\Utilities\Cryptography\Hashing\FNV1.h" />
     <ClInclude Include="Source\Utilities\Files\Filesystem.h" />
