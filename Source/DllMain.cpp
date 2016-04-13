@@ -26,7 +26,7 @@ extern "C"
         std::va_list Variadic;
         va_start(Variadic, Message);
 
-        // Messages are a 32bit FNV1a of a string.
+        // Messages are a 32bit FNV1a hash of a string.
         switch (Message)
         {
         }
