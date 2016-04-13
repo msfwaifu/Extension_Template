@@ -13,7 +13,7 @@
 
 // Constructors, any data passed fills Internalstorage.
 #pragma optimize( "", off )
-Bytebuffer::Bytebuffer(uint32_t Inputlength, const void *Inputdata)
+Bytebuffer::Bytebuffer(size_t Inputlength, const void *Inputdata)
 {
     if (Inputdata != nullptr)
         Internalstorage.append((uint8_t *)Inputdata, Inputlength);
