@@ -11,4 +11,5 @@
 #include "Cryptography\Hashing\FNV1.h"
 #include "Strings\Variadicstring.h"
 #include "Strings\Debugstring.h"
+#include "Buffers\Bytebuffer.h"
 #include "Files\Filesystem.h"
