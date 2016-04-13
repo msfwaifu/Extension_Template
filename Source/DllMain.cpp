@@ -29,6 +29,10 @@ extern "C"
         // Messages are a 32bit FNV1a hash of a string.
         switch (Message)
         {
+
+        case FNV1a_Compiletime_32("DefaultCase"):
+        default:
+            break;
         }
 
         va_end(Variadic);
