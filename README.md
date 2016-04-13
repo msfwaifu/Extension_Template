@@ -1,0 +1,1 @@
+#Ayrias Extension Template
