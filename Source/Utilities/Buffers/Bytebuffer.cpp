@@ -39,7 +39,7 @@ Bytebuffer::Bytebuffer()
 Bytebuffer::~Bytebuffer()
 {
     // Clear the memory and deallocate.
-    std::fill(Internalstorage.begin(), Internalstorage.end(), 0xCC);
+    std::fill(Internalstorage.begin(), Internalstorage.end(), 0);
     Internalstorage.clear();
     Internalstorage.shrink_to_fit();
     Storageiterator = 0;
@@ -174,7 +174,7 @@ template <> bool Bytebuffer::Read(Type *Buffer, bool Typechecked)       \
 template <> Type Bytebuffer::Read(bool Typechecked)                     \
 {                                                                       \
     Type Result{};                                                      \
-    Read<Type>(&Result, Typechecked);                                   \
+    Read(&Result, Typechecked);                                         \
     return Result;                                                      \
 };                                                                      \
 template <> bool Bytebuffer::Write(const Type Buffer, bool Typechecked) \
