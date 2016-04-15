@@ -28,6 +28,22 @@
 #pragma warning Unknown dynamic link import/export semantics.
 #endif
 
+// Compiling for x64 check.
+#if _WIN32
+#if _WIN64
+#define ENVIRONMENT64
+#else
+#define ENVIRONMENT32
+#endif
+#endif
+#if __GNUC__
+#if __x86_64__ || __ppc64__
+#define ENVIRONMENT64
+#else
+#define ENVIRONMENT32
+#endif
+#endif
+
 // Logging functions save to dir and duplicate to stdout.
 #define LOGFILEDIR ".\\Plugins\\Logs\\"
 #define DEBUGTOSTREAM
