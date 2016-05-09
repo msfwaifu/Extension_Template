@@ -41,6 +41,9 @@ bool CSVManager::Readfile(const char *Filepath)
     char *Tempstring{ nullptr };
     char *Backupstring = InputString;
 
+    // Delete the old buffer.
+    EntryBuffer.clear();
+
     // Ensure that the file exists.
     Filehandle = fopen(Filepath, "r");
     if (!Filehandle) return false;
