@@ -39,7 +39,7 @@ struct IHook
 struct Stomphook : public IHook
 {
     // Create and remove a hook at [location].
-    virtual bool Installhook(void *Location, void *Target);
+    virtual bool Installhook(void *Location, void *Target) override;
     virtual bool Removehook() override;
 };
 EXTENDEDHOOKDECL(Stomphook);
