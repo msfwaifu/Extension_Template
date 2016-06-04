@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Binarymodification\ImportAddressTable.h"
+#include "Binarymodification\Hooking.h"
 #include "Cryptography\Hashing\FNV1.h"
 #include "Strings\Variadicstring.h"
 #include "Strings\Debugstring.h"

@@ -22,6 +22,10 @@ struct Basehook ##Ex : public Basehook                          \
     }                                                           \
 }                                                               \
 
+// Memory protection modifiers.
+extern void Protectblock(const void *Address, const size_t Length, unsigned long Oldprotect);
+extern unsigned long Unprotectblock(const void *Address, const size_t Length);
+
 // The base interface for hooks.
 struct IHook
 {
@@ -31,7 +35,7 @@ struct IHook
     void *s_Target;
 
     // Create and remove a hook at [location].
-    virtual bool Installhook(void *Location, void *Target) = 0;
+    virtual bool Installhook(const void *Location, const void *Target) = 0;
     virtual bool Removehook() = 0;
 };
 
@@ -39,7 +43,7 @@ struct IHook
 struct Stomphook : public IHook
 {
     // Create and remove a hook at [location].
-    virtual bool Installhook(void *Location, void *Target) override;
+    virtual bool Installhook(const void *Location, const void *Target) override;
     virtual bool Removehook() override;
 };
 EXTENDEDHOOKDECL(Stomphook);
@@ -48,7 +52,7 @@ EXTENDEDHOOKDECL(Stomphook);
 struct Callhook : public IHook
 {
     // Create and remove a hook at [location].
-    virtual bool Installhook(void *Location, void *Target) override;
+    virtual bool Installhook(const void *Location, const void *Target) override;
     virtual bool Removehook() override;
 };
 EXTENDEDHOOKDECL(Callhook);
