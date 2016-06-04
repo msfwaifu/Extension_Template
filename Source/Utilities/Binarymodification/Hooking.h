@@ -52,12 +52,3 @@ struct Callhook : public IHook
     virtual bool Removehook() override;
 };
 EXTENDEDHOOKDECL(Callhook);
-
-// Hooks the function pointed to by a vtable.
-struct VTablehook : public IHook
-{
-    // Create and remove a hook at [location].
-    virtual bool Installhook(void *Location, void *Target) override;
-    virtual bool Removehook() override;
-};
-EXTENDEDHOOKDECL(VTablehook);
