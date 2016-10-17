@@ -1,6 +1,6 @@
 /*
     Initial author: (https://github.com/)Convery for Ayria.se
-    License: LGPL 3.0
+    License: MIT
     Started: 2016-04-13
     Notes:
         The entrypoint for this extension.

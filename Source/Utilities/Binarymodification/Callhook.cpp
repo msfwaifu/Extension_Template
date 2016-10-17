@@ -1,6 +1,6 @@
 /*
     Initial author: (https://github.com/)Convery for Ayria.se
-    License: LGPL 3.0
+    License: MIT
     Started: 2016-6-4
     Notes:
         Inserts a dumb call at the location.
