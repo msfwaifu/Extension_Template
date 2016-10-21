@@ -191,6 +191,7 @@
     <ClInclude Include="Source\Utilities\Strings\Variadicstring.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\DllMain.cpp" />
     <ClCompile Include="Source\Utilities\Binary\Hooks.cpp" />
     <ClCompile Include="Source\Utilities\Binary\IATReader.cpp" />
     <ClCompile Include="Source\Utilities\Binary\Memprotect.cpp" />
