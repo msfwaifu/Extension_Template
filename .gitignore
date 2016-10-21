@@ -7,3 +7,5 @@
 *.sln
 *.iobj
 *.ipdb
+
+Bin/
