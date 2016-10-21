@@ -1,16 +1,19 @@
-Ayrias Extension Template
----
+# Ayria Extension/Plugin Template
 
-This repository serves as a starting-point for new developers and includes:
+The idea of this repository is to act as a template for new developers. Simply add your code to an export in `DllMain.cpp` and hit compile. As easy as that. However, points of interest that you may want to familiarize yourself with:
 
-* A general directory structure to make your extension easy to read for other developers.
-* An introduction to the eventdriven extension-interface as shown in /DllMain.cpp
-* A platform to let you inject your existing code and have it integrated with the system in minutes.
-* A basic library of utilities that is constantly being updated to give you the tools you need.
+* The general file/folder structure. While plugins are not limited to this format, it helps other developers reading your code if you keep it.
+* The callback based [Bootstrap](https://github.com/AyriaPublic/NativeBootstrap) exports that will be called if the game is started by Ayrias desktop client. While they are simple and optional, they provide convenient entrypoints for different tasks so we encourage everyone to use them. Experienced developers can ofcourse add more exports for their own APIs.
+* The `Utilities` and accompanying `Thirdparty` directory. It provides a lot of useful classes to simplify further development. The most recent (and more generic) implementation of these can be found in the [AyriaUtilities](https://github.com/AyriaPublic/AyriaUtilities) repository.
 
+## Extension/plugin loading
 
-Extensionloading
---
-While you can inject your new extension into an application and have it run, the easiest way would be to use the Bootstrap module from Ayria (https://github.com/AyriaPublic/NativeBootstrap).
-Once injected, this module will attempt to load all extensions from ./Plugins/ and call the initialization exports as needed.
-As such, if you are creating an extension for an existing system, simply drop it into your ./Plugins/ directory.
+After compiling your extension/plugin you'll find it in your `/Bin/` directory with the extension `.Ayria32` or `.Ayria64` depending on your configuration. This plugin should be copied to your games `/Plugins/` directory where the [Bootstrap](https://github.com/AyriaPublic/NativeBootstrap) module will automatically load it when the game starts.
+
+## Configuration files and extra data
+
+As there's quite a few plugins and more are created daily, it's easy to clutter the clients `/Plugins/` directory if plugins were to store their data in the root folder. While you may ofcourse store your data wherever you want, Ayria recommends that you create a subdirectory for your plugin e.g. `/Plugins/AyriaFS/` or based on author e.g. `/Plugins/Ayria/`. The `/Plugins/Logs/` directory is reserved for logs.
+
+## Debugging information
+
+Ayrias client injects the bootstrap into a new process which makes it hard to debug. As such you'll want to do this injection yourself. There is multiple ways to do this, but for Steam games we recommend compiling the [AyriaPlatform](https://github.com/AyriaPublic/AyriaPlatform) plugin as a replacement for the `steam_api.dll` which will load a [Bootstrap.dll](https://github.com/AyriaPublic/NativeBootstrap) from the games directory on startup; thus enabling you to start the game via your debugger. Other methods include modifying a files ImportAddressTable with tools like [CFF Explorer](http://www.ntcore.com/exsuite.php) to load the `bootstrap.dll` from somewhere.
