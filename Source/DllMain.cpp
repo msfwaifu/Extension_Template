@@ -38,13 +38,12 @@ extern "C"
         /*
             This export is called when a message is broadcasted to all plugins.
             As such you'll want to have a unique name for the messages your
-            plugin listens for. Example below.
+            plugin listens for. Message IDs are FNV1a 32-bit hashes of the name.
         */
 
         std::va_list Variadic;
         va_start(Variadic, Message);
 
-        // Messages are a 32bit FNV1a hash of a string.
         switch (Message)
         {
             case AYRIA::FNV1::Compiletime::FNV1a_32("MyPlugin_DefaultCase"):
