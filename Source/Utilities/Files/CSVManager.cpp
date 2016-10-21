@@ -7,6 +7,7 @@
 */
 
 #include "CSVManager.h"
+#include "../../STDInclude.h"
 #include "../Strings/Variadicstring.h"
 
 // Reimplementation of standard functionality.

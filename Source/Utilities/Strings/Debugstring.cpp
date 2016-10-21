@@ -7,6 +7,7 @@
         The logfile is stored in LOGFILEDIR\\MODULENAME.log.
 */
 
+#include "../../STDInclude.h"
 #include "Debugstring.h"
 #include <cstdio>
 #include <ctime>

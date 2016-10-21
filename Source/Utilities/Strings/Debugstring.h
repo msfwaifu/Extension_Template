@@ -9,14 +9,6 @@
 
 #pragma once
 
-// Ensure we have something defined.
-#ifndef LOGFILEDIR
-#define LOGFILEDIR "./"
-#endif
-#ifndef MODULENAME
-#define MODULENAME "Ayria"
-#endif
-
 namespace AYRIA
 {
     namespace Debug
