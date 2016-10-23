@@ -98,7 +98,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Bin\</OutDir>
     <IntDir>$(SolutionDir)Bin\Temporary\</IntDir>
-    <TargetExt>.Ayria$(PlatformArchitecture)</TargetExt>
+    <TargetExt>.ayria$(PlatformArchitecture)</TargetExt>
     <IncludePath>$(SolutionDir)Dependencies\Includes;$(SolutionDir)Source;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\Libraries\$(PlatformTarget);$(LibraryPath)</LibraryPath>
     <SourcePath>$(SolutionDir)Source;$(SourcePath)</SourcePath>
