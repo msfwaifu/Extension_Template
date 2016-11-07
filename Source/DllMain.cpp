@@ -65,7 +65,7 @@ BOOLEAN WINAPI DllMain(HINSTANCE hDllHandle, DWORD nReason, LPVOID Reserved)
         DisableThreadLibraryCalls(hDllHandle);
 
         // Clean the logfile so we only save this session.
-        AYRIA::Debug::DeleteLogfile();
+        AYRIA::DEBUG::DeleteLogfile();
         break;
     }
 
@@ -76,7 +76,7 @@ BOOLEAN WINAPI DllMain(HINSTANCE hDllHandle, DWORD nReason, LPVOID Reserved)
 void __attribute__((constructor)) SOMain()
 {
     // Clean the logfile so we only save this session.
-    AYRIA::Debug::DeleteLogfile();
+    AYRIA::DEBUG::DeleteLogfile();
 }
 
 #endif

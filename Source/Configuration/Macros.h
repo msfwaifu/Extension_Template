@@ -16,8 +16,8 @@
 #define InfoPrint(string)
 #define VAPrint(format, ...)
 #else
-#define PrintFunction() AYRIA::Debug::AppendLogfile(__FUNCTION__, "Call to")
-#define DebugPrint(string) AYRIA::Debug::AppendLogfile(string, "Debug")
-#define InfoPrint(string) AYRIA::Debug::AppendLogfile(string, "Info")
-#define VAPrint(format, ...) AYRIA::Debug::AppendLogfileTimestamp(AYRIA::va(format, __VA_ARGS__))
+#define PrintFunction() AYRIA::DEBUG::AppendLogfile(__FUNCTION__, "Call to")
+#define DebugPrint(string) AYRIA::DEBUG::AppendLogfile(string, "Debug")
+#define InfoPrint(string) AYRIA::DEBUG::AppendLogfile(string, "Info")
+#define VAPrint(format, ...) AYRIA::DEBUG::AppendLogfileTimestamp(AYRIA::va(format, __VA_ARGS__))
 #endif
