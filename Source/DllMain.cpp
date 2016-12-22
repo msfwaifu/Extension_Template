@@ -1,14 +1,15 @@
 /*
     Initial author: (https://github.com/)Convery for Ayria.se
     License: MIT
-    Started: 2016-10-21
+    Started: 2016-12-22
     Notes:
-        Entrypoint for the plugin, exports per the 2016 standard.
+        Entrypoint for the plugin, proposed 2017 standard.
 */
 
 #include "STDInclude.h"
-#include <cstdarg>
 
+// The entrypoints that will be called by the bootstrap.
+#pragma region Pluginexports
 extern "C"
 {
     EXPORT_ATTR void __cdecl onExtensionUnloading(void)
@@ -33,50 +34,48 @@ extern "C"
             It should be used to do your memory modifications.
         */
     }
-    EXPORT_ATTR void __cdecl onMessage(uint32_t Message, ...)
+
+#pragma region Optional
+    EXPORT_ATTR void __cdecl onMessage(uint32_t MessageID, uint32_t Buffersize, const char *Bufferdata)
     {
         /*
-            This export is called when a message is broadcasted to all plugins.
-            As such you'll want to have a unique name for the messages your
-            plugin listens for. Message IDs are FNV1a 32-bit hashes of the name.
+            This export is used called when a plugin broadcasts a message.
+            As such you'll want a unique messageID, we suggest a hash of a
+            string that's prefixed with your plugins name.
+
+            The bytebuffer class should be included in the utility folder.
         */
 
-        std::va_list Variadic;
-        va_start(Variadic, Message);
+#ifdef BYTEBUFFER_IMPL
+        Bytebuffer Message(Buffersize, Bufferdata);
 
-        switch (Message)
+        switch (MessageID)
         {
-            case AYRIA::FNV1::Compiletime::FNV1a_32("MyPlugin_DefaultCase"):
-            default: break;
+            case AYRIA::FNV1::Compiletime::FNV1_32("MyPlugin_Default"):
+            default:
         }
-
-        va_end(Variadic);
+#endif
     }
-}
-
-#ifdef _WIN32
-#include <Windows.h>
-BOOLEAN WINAPI DllMain(HINSTANCE hDllHandle, DWORD nReason, LPVOID Reserved)
-{
-    switch ( nReason )
+    EXPORT_ATTR const char *__cdecl Friendlyname(void)
     {
-    case DLL_PROCESS_ATTACH:
-        // Rather not handle all thread updates.
-        DisableThreadLibraryCalls(hDllHandle);
+        /*
+            The public JSON package file should contain this name.
+            But the author can override it through this export.
+        */
 
-        // Clean the logfile so we only save this session.
-        AYRIA::DEBUG::DeleteLogfile();
-        break;
+        return "MyPlugin by Author";
     }
-
-    return TRUE;
+#pragma endregion
 }
+#pragma endregion
 
-#else
-void __attribute__((constructor)) SOMain()
+// The entrypoint of the plugin, do not initialize anything.
+#pragma region Pluginentry
+#ifndef _WIN32
+// Entrypoint on *nix systems.
+void __attribute__((constructor)) PluginMain(void)
 {
-    // Clean the logfile so we only save this session.
+    // Remove the old logfile from the directory.
     AYRIA::DEBUG::DeleteLogfile();
 }
-
 #endif
