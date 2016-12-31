@@ -75,7 +75,30 @@ extern "C"
 // Entrypoint on *nix systems.
 void __attribute__((constructor)) PluginMain(void)
 {
+#ifdef DEBUGLOG_IMPL
     // Remove the old logfile from the directory.
     AYRIA::DEBUG::DeleteLogfile();
+#endif
+}
+#else
+#include <Windows.h>
+BOOLEAN WINAPI DllMain(HINSTANCE hDllHandle, DWORD nReason, LPVOID Reserved)
+{
+    switch (nReason)
+    {
+        case DLL_PROCESS_ATTACH:
+        {
+            // Opt out of thread updates.
+            DisableThreadLibraryCalls(hDllHandle);
+
+#ifdef DEBUGLOG_IMPL
+            // Remove the old logfile from the directory.
+            AYRIA::DEBUG::DeleteLogfile();
+#endif
+        }
+    }
+
+    // The initialization should not fail.
+    return TRUE;
 }
 #endif
